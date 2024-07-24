@@ -4,7 +4,7 @@ import { error } from "console";
 import connnectDB from "../../../../../../mongodb/db";
 import { Post } from "../../../../../../mongodb/models/post";
 
-export async function DELETE(request: Request, {params} : {params : {post_id: string}}){
+export async function PUT(request: Request, {params} : {params : {post_id: string}}){
     auth().protect();
     const user = await currentUser();
     try {

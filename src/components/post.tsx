@@ -9,6 +9,8 @@ import { Trash2 } from 'lucide-react';
 import ReactTimeago from 'react-timeago';
 import { useUser } from '@clerk/nextjs';
 import Image from 'next/image';
+import PostOptions from './postOptions';
+import { toast } from 'sonner';
 
 const Post = ({post}:{post: IPostDocument}) => {
   const { user } = useUser();
@@ -52,11 +54,11 @@ const Post = ({post}:{post: IPostDocument}) => {
               variant="outline"
               onClick={() => {
                 const promise = deletePostAction(post._id as string);
-                // toast.promise(promise, {
-                //   loading: "Deleting post...",
-                //   success: "Post deleted!",
-                //   error: "Error deleting post",
-                // });
+                toast.promise(promise, {
+                  loading: "Deleting post...",
+                  success: "Post deleted!",
+                  error: "Error deleting post",
+                });
               }}
             >
               <Trash2 />
@@ -79,6 +81,7 @@ const Post = ({post}:{post: IPostDocument}) => {
           />
         )}
       </div>
+      <PostOptions postId={post._id as string} post={post} />
     </div>
   )
 }

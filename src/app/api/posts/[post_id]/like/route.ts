@@ -20,12 +20,14 @@ export async function GET(request: Request, {params} : {params : {post_id: strin
     }
 }
 
-export async function DELETE(request: Request, {params} : {params : {post_id: string}}){
+export async function PUT(request: Request, {params} : {params : {post_id: string}}){
     auth().protect();
     const user = await currentUser();
     try {
         await connnectDB();
         const post = await Post.findById(params.post_id);
+
+        // const { userId }: LikePostRequestBody = await request.json();
 
         if(!post){
             return NextResponse.json({ error: "Post not found"}, {status: 404});

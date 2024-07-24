@@ -14,7 +14,7 @@ export interface IComment extends Document, ICommentBase{
 const CommentSchema = new Schema<IComment>({
     user: {
         userId: {type: String, required: true},
-        uesrImage: {type: String, required: true},
+        userImage: {type: String, required: true},
         firstName: {type: String, required: true},
         lastName: {type: String}
     },
